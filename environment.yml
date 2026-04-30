@@ -1,0 +1,27 @@
+# Defines the conda environment for this project. Creates a self contained
+# environment with all required packages at the correct versions.
+# scikit-learn is pinned below 1.5 because econml requires this version range.
+
+name: nba-mvp
+
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.12
+  - pandas
+  - numpy
+  - scipy
+  - requests
+  - matplotlib
+  - seaborn
+  - plotly
+  - jupyter
+  - pip
+  - statsmodels
+  - pip:
+    - nba_api
+    - scikit-learn>=1.0,<1.5
+    - econml
+    - kaleido

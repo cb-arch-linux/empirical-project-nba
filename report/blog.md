@@ -11,9 +11,9 @@ description: Embiid won. The data says otherwise.
 
 ---
 
-Only three players in NBA history have ever won three consecutive MVP awards: Bill Russell, Wilt Chamberlain, and Larry Bird. Going into the 2022-23 season, Nikola Jokić had a chance to become the fourth and only the second player to do it in the modern media-vote era. Despite a historic season he was beaten to it by the scoring prowess of Joel Embiid.
+Only three players in NBA history have ever won three consecutive MVP awards: Bill Russell, Wilt Chamberlain, and Larry Bird. Going into the 2022-23 season, Nikola Jokić had a chance to become the fourth and only the second player to do it in the modern media-vote era. Despite a historic season, he was beaten to it by the scoring prowess of Joel Embiid.
 
-But why? Even casual fans questioned it - Jokić received only 15 first-place votes despite a dominant season. Embiid scored 33.1 points per game, the highest average since Michael Jordan in 1987. The narrative was simple: Embiid finally beat his injury demons and put together a great season on a decent team.
+But why? Even casual fans questioned it - Jokić received only 15 first-place votes despite a dominant season. Embiid scored 33.1 points per game, the highest average by a centre since Moses Malone in 1981-82. The narrative was simple: Embiid finally beat his injury demons and put together a great season on a decent team.
 
 But scoring 33 points a game doesn't make you the most valuable player. It makes you the highest usage player who is also very good at basketball. Those aren't the same thing. This analysis builds a clear analytical picture - using seven seasons of historical MVP voting data, three custom impact metrics, and a causal forest model - to find out who actually deserved the award.
 
@@ -53,7 +53,7 @@ Third, a **usage rate of at least 26%**. Every MVP winner from 2015-16 through 2
 
 ## Building Better Metrics
 
-Points, rebounds, and assists tell you what happened. They don't tell you why, or how efficiently. To answer those questions properly, this analysis constructs three custom metrics, adapted from the Box Plus Minus methodology developed by Daniel Myers at Basketball Reference (Myers, 2014).
+Points, rebounds, and assists tell you what happened. They don't tell you why, or how efficiently. To answer those questions properly, this analysis constructs three custom metrics, adapted from the Box Plus Minus methodology developed by Daniel Myers at Basketball Reference (Myers, 2014; Sports Reference, 2020).
 
 The key difference from raw box score stats is that these metrics use **rate statistics** - percentages of possessions, rebounds, and assists - rather than per-game totals. Rate stats account for usage. They also adjust for pace, so players on faster teams aren't rewarded for playing in more possessions.
 
@@ -79,7 +79,7 @@ The model is trained only on data *before* the 2022-23 season. It never sees the
 
 A supplementary OLS regression tests statistical significance, providing p-values for each coefficient. The results are shown below.
 
-![OLS regression coefficients from historical MVP data (2015-16 to 2021-22). Blue bars are significant at the 5% level. Custom BPM is the strongest positive predictor - by far.](https://raw.githubusercontent.com/cb-arch-linux/empirical-project-nba/main/output/figures/fig7_ols_coefficients.png)
+![OLS regression coefficients from historical MVP data (2015-16 to 2021-22). Navy bars are significant at the 5% level. Custom BPM is the strongest positive predictor - by far.](https://raw.githubusercontent.com/cb-arch-linux/empirical-project-nba/main/output/figures/fig7_ols_coefficients.png)
 
 Custom BPM is the strongest positive predictor of MVP quality (coefficient 0.046, p < 0.001). Team win percentage and usage rate are also significantly positive - the historical reality is that MVPs always come from winning teams and efficiently carry a heavy offensive load.
 

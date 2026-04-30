@@ -41,7 +41,7 @@ Jokić scores 24.5 points - not even registering in the top 20 - yet his PIE of 
 
 ## Building Better Metrics
 
-Points, rebounds, and assists tell you what happened. They don't tell you why, or how efficiently. To answer those questions properly, this analysis constructs three custom metrics, adapted from the Box Plus Minus methodology developed by Daniel Myers at Basketball Reference (Myers, 2014; Weil, 2020).
+Points, rebounds, and assists tell you what happened. They don't tell you why, or how efficiently. To answer those questions properly, this analysis constructs three custom metrics, adapted from the Box Plus Minus methodology developed by Daniel Myers at Basketball Reference (Myers, 2014).
 
 The key difference from raw box score stats is that these metrics use **rate statistics** - percentages of possessions, rebounds, and assists - rather than per-game totals. Rate stats account for usage. They also adjust for pace, so players on faster teams aren't rewarded for playing in more possessions.
 

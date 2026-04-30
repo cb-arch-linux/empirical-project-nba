@@ -9,9 +9,7 @@
  
 The full blog post is published on HackMD and can be accessed here:
  
-**[Read the blog post →](https://hackmd.io)**
- 
-> Update this link once the HackMD note is published.
+**[Read the blog post →](https://hackmd.io/@KQt8xL5aQairKTq39IoDqg/SJvh1_Rabg)**
  
 ---
  

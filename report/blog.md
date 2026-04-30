@@ -1,5 +1,5 @@
 # The Most Controversial MVP of the Decade
-### A Statistical Analysis of the 2022-23 NBA MVP
+### A Statistical Analysis of the 2022-23 NBA Most Valuable Player
 
 **University of Exeter | BEE2041 Empirical Project**
 

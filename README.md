@@ -204,4 +204,4 @@ Myers, D. (2014). *Introducing box plus/minus (BPM)*. Sports Reference. https://
  
 Oliver, D. (2004). *Basketball on paper: Rules and tools for performance analysis*. Potomac Books.
  
-Weil, S. (2020). *Introducing BPM 2.0*. Sports Reference. https://www.sports-reference.com/blog/2020/04/introducing-bpm-2-0/
+Weil, S. (2020). *Introducing BPM 2.0*. Sports Reference. https://www.sports-reference.com/blog/2020/02/introducing-bpm-2-0/

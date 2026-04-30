@@ -1,3 +1,9 @@
+---
+title: The Most Controversial MVP of the Decade
+tags: NBA, basketball analytics, MVP, data science
+description: Embiid won. The data says otherwise.
+---
+
 # The Most Controversial MVP of the Decade
 ### A Statistical Analysis of the 2022-23 NBA Most Valuable Player
 
@@ -5,9 +11,9 @@
 
 ---
 
-Only three players in NBA history have ever won three consecutive MVP awards: Bill Russell, Wilt Chamberlain, and Larry Bird. Going into the 2022-23 season, Nikola Jokić had a chance to become the fourth and only the second player to do it in the modern media-vote era. Despite a historical season he was beaten to it by the scoring prowess of Joel Embiid.
+Only three players in NBA history have ever won three consecutive MVP awards: Bill Russell, Wilt Chamberlain, and Larry Bird. Going into the 2022-23 season, Nikola Jokić had a chance to become the fourth and only the second player to do it in the modern media-vote era. Despite a historic season he was beaten to it by the scoring prowess of Joel Embiid.
 
-But why? Even some casual fans saw through Jokić recieving only 15 first place votes. Embiid scored 33.1 points per game, the highest average since Michael Jordan in 1987. The narrative was simple: Embiid finally beat his injury demons and put together a great season on a decent team.
+But why? Even casual fans questioned it - Jokić received only 15 first-place votes despite a dominant season. Embiid scored 33.1 points per game, the highest average since Michael Jordan in 1987. The narrative was simple: Embiid finally beat his injury demons and put together a great season on a decent team.
 
 But scoring 33 points a game doesn't make you the most valuable player. It makes you the highest usage player who is also very good at basketball. Those aren't the same thing. This analysis builds a clear analytical picture - using seven seasons of historical MVP voting data, three custom impact metrics, and a causal forest model - to find out who actually deserved the award.
 
@@ -23,13 +29,25 @@ The chart below shows the top 20 scorers in 2022-23 coloured by usage rate - the
 
 ![Top 20 scorers in 2022-23 coloured by usage rate. The darkest bars - the highest usage players - are almost always at the top of the scoring charts.](https://raw.githubusercontent.com/cb-arch-linux/empirical-project-nba/main/output/figures/fig1_ppg_usage.png)
 
-Looking further down to players such as Kevin Durant and Stephen Curry. These players score nearly as much on significantly less usage. A player who scores 29 points on 30% usage is doing something fundamentally different from one who scores 33 on 37%.
+Further down the list, players such as Kevin Durant and Stephen Curry score nearly as much on significantly less usage. A player who scores 29 points on 30% usage is doing something fundamentally different from one who scores 33 on 37%.
 
 This becomes clearer when you replace points with Player Impact Estimate (PIE) - the NBA's own metric capturing each player's share of positive contributions across the full box score.
 
 ![Scoring volume against Player Impact Estimate. Many high scorers sit bottom right - heavy volume, below-average overall impact.](https://raw.githubusercontent.com/cb-arch-linux/empirical-project-nba/main/output/figures/fig2_ppg_vs_pie.png)
 
 Jokić scores 24.5 points - not even registering in the top 20 - yet his PIE of 0.211 is the highest in the entire league. He produces the most positive impact per possession of anyone in basketball, while barely appearing in the scoring conversation.
+
+---
+
+## Before We Score: Who Qualifies?
+
+Not every player should be in MVP contention regardless of their individual numbers. Three thresholds are applied before scoring, each grounded in voting reality.
+
+First, a **team win percentage of at least 50%**. In the entire history of the award, only three players have won MVP on a team below a 61% win rate - Moses Malone twice in the late 1970s and early 1980s, Russell Westbrook in 2016-17, and Jokić in 2021-22.
+
+Second, a **net rating of at least -2.0**. Players whose teams perform well below average with them on the court are not in contention.
+
+Third, a **usage rate of at least 26%**. Every MVP winner from 2015-16 through 2022-23 exceeded this threshold. Role players whose metrics are inflated by elite teammates are excluded here.
 
 ---
 
@@ -45,11 +63,11 @@ The key difference from raw box score stats is that these metrics use **rate sta
 
 **Custom WS/48** (Win Shares Per 48 Minutes) estimates wins contributed per 48 minutes by combining offensive and defensive rating differentials relative to league averages, pace adjusted. A value above 0.100 is above average; elite seasons sit around 0.200.
 
-The chart below plots Custom VORP against Custom BPM for all qualifying players, with bubble size representing team win percentage. One player redefines the scale of the chart.
+The chart below plots Custom VORP against Custom BPM for all qualifying players, with bubble size representing team win percentage. BPM tells you how impactful a player was per possession; VORP tells you how much of that impact was sustained across the full season. A player in the top right is both elite per possession and delivered it consistently. One player redefines the scale of the chart.
 
 ![Custom VORP against Custom BPM. Bubble size represents team win percentage. Jokić sits in a class of his own - top right, on a winning team, by a significant margin.](https://raw.githubusercontent.com/cb-arch-linux/empirical-project-nba/main/output/figures/fig3_vorp_vs_bpm.png)
 
-Jokić's Custom BPM of 52.3 is the highest in the league by a wide margin. Embiid sits at 37.5. On a per-possession basis (BPM) and sustained across the whole season (VORP), accounting for role and efficiency, Jokić is not just better, he is in a class of his own.
+Jokić's Custom BPM of 52.3 is the highest in the league by a wide margin. Embiid sits at 37.5. On a per-possession basis (BPM) and sustained across the whole season (VORP), accounting for role and efficiency, Jokić is not just better - he is in a class of his own.
 
 ---
 
@@ -63,25 +81,13 @@ A supplementary OLS regression tests statistical significance, providing p-value
 
 ![OLS regression coefficients from historical MVP data (2015-16 to 2021-22). Blue bars are significant at the 5% level. Custom BPM is the strongest positive predictor - by far.](https://raw.githubusercontent.com/cb-arch-linux/empirical-project-nba/main/output/figures/fig7_ols_coefficients.png)
 
-Custom BPM is the strongest positive predictor of MVP quality (coefficient 0.046, p < 0.001). Team win percentage and usage rate are also significantly positive - The historical reality is that MVPs always come from winning teams and efficiently carry a heavy offensive load. 
+Custom BPM is the strongest positive predictor of MVP quality (coefficient 0.046, p < 0.001). Team win percentage and usage rate are also significantly positive - the historical reality is that MVPs always come from winning teams and efficiently carry a heavy offensive load.
 
 The most striking finding is what is *not* significant: **PIE**, the NBA's own composite impact metric, fails to reach the 5% threshold (p = 0.077). The NBA's official impact metric doesn't reliably predict MVP calibre seasons.
 
 One variable missing from the regression is net rating. It was tested but removed because custom WS/48 is algebraically derived from the same offensive and defensive rating differentials - including both in the same model creates multicollinearity. Custom WS/48 is retained as the cleaner formulation since it is pace-adjusted and expressed as wins per 48 minutes. The fact that custom WS/48 itself carries a negative coefficient, despite measuring team impact, is worth noting. It reflects the same teammate contamination problem that BPM solves, where average players on winning teams benefit from their environment.
 
-These regression-derived weights are then used to build a composite MVP score for every qualifying 2022-23 player. Each metric is normalised on a scale between 0 and 1. The weights derived from the regression are applied to only the scaled metrics which had positive coefficients in the regression. Then these metrics are summed to produce a score between 0 and 1. The result is a single number that captures, in the proportions that history says matter, who had the most MVP-calibre season.
-
----
-
-## Before We Score: Who Qualifies?
-
-Not every player should be in MVP contention regardless of their individual numbers. Three thresholds are applied, each grounded in voting reality.
-
-First, a **team win percentage of at least 50%**. In the entire history of the award, only three players have won MVP on a team below a 61% win rate - Moses Malone twice in the late 1970s and early 1980s, Russell Westbrook in 2016-17, and Jokić in 2021-22.
-
-Second, a **net rating of at least -2.0**. Players whose teams perform well below average with them on the court are not in contention.
-
-Third, a **usage rate of at least 26%**. Every MVP winner from 2015-16 through 2022-23 exceeded this threshold. The OLS regression confirms usage is a significantly positive predictor of MVP calibre seasons (p = 0.002). Role players whose metrics are inflated are excluded here.
+These regression-derived weights are then used to build a composite MVP score for every qualifying 2022-23 player. Each metric is normalised on a scale between 0 and 1. The weights derived from the regression are applied to only the scaled metrics which had positive coefficients. These are then summed to produce a score between 0 and 1. The result is a single number that captures, in the proportions that history says matter, who had the most MVP-calibre season.
 
 ---
 
@@ -109,7 +115,7 @@ Giannis ranks second because Milwaukee had the best team record of any top candi
 
 ## Impact vs Efficiency
 
-The chart below places every qualifying player on two of the strongest predictors of MVP quality simultaneously - Custom BPM on the x-axis and true shooting percentage on the y-axis. The top-right quadrant is where genuine MVP candidates live.
+The chart below places every qualifying player on two of the strongest predictors of MVP quality simultaneously - Custom BPM (net impact per 100 possessions) on the x-axis and true shooting percentage on the y-axis. The top-right quadrant is where genuine MVP candidates live: high impact and high efficiency.
 
 ![Custom BPM against true shooting percentage. Top right is where MVP candidates should be - high impact and high efficiency. Jokić sits alone.](https://raw.githubusercontent.com/cb-arch-linux/empirical-project-nba/main/output/figures/fig5_ws48_vs_net_rating.png)
 
@@ -119,17 +125,17 @@ Jokić occupies the top right entirely alone. Embiid is clearly excellent but si
 
 ## Does Piling On Possessions Actually Help?
 
-The final question this analysis looks to balance the argument: does giving a player more of the ball cause them to be more efficient, or do their counting stats just reflect the volume of possessions?
+The final question this analysis asks is the most direct test of the Embiid argument: does giving a player more of the ball cause them to be more efficient, or do their counting stats just reflect the volume of possessions?
 
-This matters because it gets at the heart of the Embiid argument. If Embiid genuinely improves the more the offence runs through him, then his 33-point average reflects real dominance. If usage doesn't cause efficiency gains, or even hurts them, then those numbers are partly a product of volume.
+If Embiid genuinely improves the more the offence runs through him, then his 33-point average reflects real dominance. If usage doesn't cause efficiency gains, or even hurts them, then those numbers are partly a product of volume.
 
 To answer this question, a **Double Machine Learning Causal Forest** is fitted using the `econml` package (a Python library for causal inference). The treatment variable is usage rate; the outcome is true shooting percentage. True shooting percentage is used rather than a composite metric because composite metrics like PIE have circular relationships with usage. True shooting percentage is independent: it measures how efficiently a player converts their shots regardless of how many they take.
 
-The DML approach removes the influence of confounding player characteristics: their passing rates, rebounding rates, defensive metrics and custom BPM. Then estimates how much usage itself drives shooting efficiency. This is the key difference from a simple correlation: it asks not whether high-usage players happen to be efficient, but whether *increasing a specific player's usage would cause their efficiency to change*.
+The DML approach removes the influence of confounding player characteristics - their passing rates, rebounding rates, defensive metrics and custom BPM - then estimates how much usage itself drives shooting efficiency. This is the key difference from a simple correlation: it asks not whether high-usage players happen to be efficient, but whether *increasing a specific player's usage would cause their efficiency to change*.
 
 ![Causal forest estimates of the effect of usage rate on true shooting percentage for top MVP candidates. Wide confidence intervals reflect uncertainty - the data cannot isolate individual causal effects from a single season with confidence.](https://raw.githubusercontent.com/cb-arch-linux/empirical-project-nba/main/output/figures/fig6_causal_effects.png)
 
-The confidence intervals are wide - wide enough that the model cannot confidently say whether more usage helps or hurts any individual candidate. This is an honest finding rather than a failure of the method. Isolating causal effects from observational data in a single NBA season is difficult; too many confounding factors move together for the model to separate them. What the wide intervals tell us is that the causal effect of usage on efficiency is uncertain, which is itself informative: The MVP title cannot be determined on single metric causations but is instead a combination of moving parts that paint a picture of *value*.
+The confidence intervals are wide - wide enough that the model cannot confidently say whether more usage helps or hurts any individual candidate. This is an honest finding rather than a failure of the method. Isolating causal effects from observational data in a single NBA season is difficult; too many confounding factors move together for the model to separate them. What the wide intervals tell us is that the causal effect of usage on efficiency is uncertain, which is itself informative: the MVP case cannot be built on any single causal relationship, but is instead a combination of dimensions that together paint a picture of *value*.
 
 All point estimates are positive. But given the uncertainty, this should be treated as directional rather than a definitive finding.
 
@@ -139,11 +145,11 @@ All point estimates are positive. But given the uncertainty, this should be trea
 
 The data says Nikola Jokić should have won the 2022-23 MVP.
 
-His MVP score of 0.825 leads the field. His Custom BPM of 52.3 is the highest in the league by a distance. His team won 69.6% of their games. But it wasn't enough to get him over the line. In fact, it wasn't even close, Embiid recieved the large majority of first place votes and one voter left Jokić off their ballot completely. His consolation was the 2023 NBA Championship. Denver lost only 4 of 16 games and Jokić averaged 30 points, 14 rebounds and 7.2 assists in the final on his way to his first ring and Finals MVP. At the very least, making the voters think twice about their pick.
+His MVP score of 0.825 leads the field. His Custom BPM of 52.3 is the highest in the league by a distance. His team went 16-4 in the playoffs and Jokić averaged 30.2 points, 14.0 rebounds and 7.2 assists in the Finals on his way to his first ring and Finals MVP. The regular season voters, it turned out, had picked the wrong man.
 
-Embiid's 33.1 points per game is one of the most impressive scoring seasons in modern NBA history. But the scoring average that made his case so compelling in public debate is exactly what this analysis argues is misleading. The metrics trained on historical MVP data reward something harder to see but more important: how much better your team gets when you are on the court, in other words, VALUE! It is a shame probably his only MVP has this astrix, but as more seasons go by it seems, at least statistically, the voters got it wrong.
+Embiid's 33.1 points per game is one of the most impressive scoring seasons in modern NBA history. But the scoring average that made his case so compelling in public debate is exactly what this analysis argues is misleading. The metrics trained on historical MVP data reward something harder to see but more important: how much better your team gets when you are on the court. Whether this turns out to be his only MVP, the statistical case against the 2022-23 vote only grows stronger with time.
 
-Jokić had won back-to-back MVPs in 2021 and 2022. The conversation going into 2023 was dominated by how difficult three MVP's in a row was to achieve. Only three players in NBA history have ever won three consecutive MVPs: Russell, Chamberlain, and Bird. The reluctance to add Jokić to that list — despite the numbers - is the clearest example of human decision making that is so hard to capture in statistics.
+The reluctance to give Jokić a third consecutive award - despite the numbers - is perhaps the clearest example of human decision making that is so hard to capture in statistics.
 
 The data doesn't know about voter fatigue. It just knows who was the most valuable.
 

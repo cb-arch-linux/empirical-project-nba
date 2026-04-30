@@ -1,0 +1,44 @@
+# Python
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Conda and virtual environments
+venv/
+env/
+.env
+.conda/
+
+# Raw and clean data
+data/raw/
+data/clean/
+
+# Generated outputs
+output/tables/
+
+# Note: output/figures/ is intentionally NOT ignored so that the figures
+# embedded in blog.md via raw GitHub URLs are publicly accessible.
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp

@@ -104,7 +104,7 @@ Two datasets are collected. **Historical data (2015-16 to 2021-22)** is used to 
  
 ### Custom Impact Metrics
  
-Three custom metrics are constructed from NBA API rate statistics, adapted from the BPM methodology (Myers, 2014; Weil, 2020) and the win shares framework (Oliver, 2004).
+Three custom metrics are constructed from NBA API rate statistics, adapted from the BPM methodology (Myers, 2014) and the win shares framework (Oliver, 2004).
  
 **Custom BPM** estimates net impact per 100 possessions using steal rate, block rate, assist rate, offensive and defensive rebound rates, and true shooting percentage relative to the league average. The net rating blend uses each player's contribution *above their team's baseline* to avoid players from being rewarded for playing with good teammates.
  
@@ -204,4 +204,4 @@ Myers, D. (2014). *Introducing box plus/minus (BPM)*. Sports Reference. https://
  
 Oliver, D. (2004). *Basketball on paper: Rules and tools for performance analysis*. Potomac Books.
  
-Weil, S. (2020). *Introducing BPM 2.0*. Sports Reference. https://www.sports-reference.com/blog/2020/02/introducing-bpm-2-0/
+Sports Reference. (2020, February 25). *Introducing BPM 2.0*. https://www.sports-reference.com/blog/2020/02/introducing-bpm-2-0/

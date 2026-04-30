@@ -1,9 +1,3 @@
----
-title: The Most Controversial MVP of the Decade
-tags: NBA, basketball analytics, MVP, data science
-description: Embiid won. The data says otherwise.
----
-
 # The Most Controversial MVP of the Decade
 ### A Statistical Analysis of the 2022-23 NBA MVP
 
